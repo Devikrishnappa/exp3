@@ -1,0 +1,38 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        System.setProperty("webdriver.chrome.driver",
+
+                "C:\\Users\\Rajanipandi S\\Desktop\\TESTING\\project\\exp3\\src\\driver\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.facebook.com/signup");
+        driver.manage().window().maximize();
+        // findElement is the function
+        WebElement firstName = driver.findElement(By.name("firstname"));
+        WebElement SurName = driver.findElement(By.name("lastname"));
+        WebElement MobileNumberoremailpassword = driver.findElement(By.name("reg_email__"));
+        WebElement Newpassword = driver.findElement(By.name("reg_passwd__"));
+        WebElement Day = driver.findElement(By.name("birthday_day"));
+        WebElement Month = driver.findElement(By.name("birthday_month"));
+        WebElement Year = driver.findElement(By.name("birthday_year"));
+        WebElement gender = driver.findElement(By.xpath("//input[@value='2']"));
+        WebElement Button = driver.findElement(By.name("websubmit"));
+        firstName.sendKeys("Ranjani");
+        SurName.sendKeys("pandi");
+        MobileNumberoremailpassword.sendKeys("9999999999");
+        Newpassword.sendKeys("skct123");
+        Day.sendKeys("8");
+        Month.sendKeys("dec");
+        Year.sendKeys("2004");
+        if (!gender.isSelected()) {
+            gender.click();
+        }
+        Button.click();
+        Thread.sleep(5000);
+        driver.quit();
+    }
+}
